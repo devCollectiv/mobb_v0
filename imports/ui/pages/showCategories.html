@@ -1,68 +1,107 @@
-
 <template name="showCategories">
-<div class="showCategories-wrapper">
-  <div class="row">
-    <div class="col s12">
-      <h2 class="center-align">{{catName}}</h2>
+  <div class="showCategories-wrapper">
+    <div class="row">
+      <div class="col s12">
+        <h2 class="center-align">{{ catName }}</h2>
+      </div>
     </div>
-  </div>
-  <div class="row categoryFlex masonry_grid">
-  {{#each card in list}}
-      <div id="{{card._id}}" class=" masonry_item categoryFlex_item card sticky-action hoverable ">
+    <div class="row categoryFlex masonry_grid">
+      {{#each card in list}}
+      <div
+        id="{{ card._id }}"
+        class=" masonry_item categoryFlex_item card sticky-action hoverable "
+      >
         <div class="card-image">
-        <a href="/listings/{{card._id}}">
-          {{#if card.image.url}}
-          <img src="{{card.image.url}}" />
-          {{else}}
+          <a href="/listings/{{ card._id }}">
+            {{#if card.image.url}}
+            <img src="{{ card.image.url }}" />
+            {{else}}
             {{#if card.url}}
-            <img src="{{getImage card.url card._id}}"/>
+            <img src="{{getImage card.url card._id}}" />
             {{/if}}
-          {{/if}}
-        </a>
+            {{/if}}
+          </a>
         </div>
 
-        <a href="/listings/{{card._id}}">
+        <a href="/listings/{{ card._id }}">
           <div class="card-content">
-            <span class="card-title "> <h5 class="center-align activator">{{card.name}}</h5></span>
+            <span class="card-title ">
+              <h5 class="center-align activator">{{ card.name }}</h5></span
+            >
             {{#if card.social.facebook}}
-            fb: <a href="https://www.facebook.com/{{card.social.facebook}}" target="_blank" rel="noopener" > @{{card.social.facebook}}</a> <br />
+            fb:
+            <a
+              href="https://www.facebook.com/{{ card.social.facebook }}"
+              target="_blank"
+              rel="noopener"
+            >
+              @{{ card.social.facebook }}</a
+            >
+            <br />
             {{/if}}
             {{#if card.social.instagram}}
-            ig: <a href="https://www.instagram.com/{{card.social.instagram}}" target="_blank" rel="noopener" > @{{card.social.instagram}}</a> <br />
+            ig:
+            <a
+              href="https://www.instagram.com/{{ card.social.instagram }}"
+              target="_blank"
+              rel="noopener"
+            >
+              @{{ card.social.instagram }}</a
+            >
+            <br />
             {{/if}}
             {{#if card.social.twitter}}
-            tt: <a href="https://www.twitter.com/{{card.social.twitter}}" target="_blank" rel="noopener" > @{{card.social.twitter}}</a> <br />
+            tt:
+            <a
+              href="https://www.twitter.com/{{ card.social.twitter }}"
+              target="_blank"
+              rel="noopener"
+            >
+              @{{ card.social.twitter }}</a
+            >
+            <br />
             {{/if}}
             <p class="center-align address">
               {{#if card.address}}
-                <span>
-                  {{card.address}}
-                </span><br />
+              <span>
+                {{ card.address }} </span
+              ><br />
               {{else}}
-                <span id="address-content">
-                  {{card.street}} <br />
-                  {{card.city}} {{card.state}} {{card.zip}} <br />
-                </span>
+              <span id="address-content">
+                {{ card.street }} <br />
+                {{ card.city }} {{ card.state }} {{ card.zip }} <br />
+              </span>
               {{/if}}
               {{#if card.phone}}
-                <a class="center-align address-phone" href="tel:+1{{card.phone}}">
-                  <i class="material-icons tiny">phone</i>
-                  {{card.phone}}
-                </a>
+              <a
+                class="center-align address-phone"
+                href="tel:+1{{ card.phone }}"
+              >
+                <i class="material-icons tiny">phone</i>
+                {{ card.phone }}
+              </a>
               {{/if}}
             </p>
             {{#if card.description}}
-              <p>{{card.description}}</p>
+            <p>{{ card.description }}</p>
             {{/if}}
           </div>
         </a>
         <div class="card-action">
           <div class="center-align">
-
-            {{#if card.location}}    
+            {{#if card.location}}
             <div class="">
               <!-- a class="btn-floating modal-trigger" id="directions_button" title="Directions" href="#modalDirections"><i class="material-icons">navigation</i></a-->
-              <a class="btn-floating" title="Go There Now!" href="https://www.google.com/maps/dir/Current+Location/{{location}}" target="_blank" rel="noopener" ><i class="material-icons">directions</i></a>
+              <a
+                class="btn-floating"
+                title="Go There Now!"
+                href="https://www.google.com/maps/dir/Current+Location/{{
+                  location
+                }}"
+                target="_blank"
+                rel="noopener"
+                ><i class="material-icons">directions</i></a
+              >
             </div>
             {{/if}}
           </div>
@@ -71,9 +110,9 @@
           {{> favoriteStar card}}
         </div>
         {{> shareListing card}}
-      </div>  
+      </div>
 
-    {{/each}}
-  </div>
+      {{/each}}
+    </div>
   </div>
 </template>
